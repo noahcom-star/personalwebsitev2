@@ -1,0 +1,74 @@
+---
+import { substack } from '../../data/content';
+---
+
+<div class="py-20">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="bg-warm-50 dark:bg-warm-900/20 rounded-3xl p-12 border border-warm-200 dark:border-warm-800 relative overflow-hidden">
+      <div class="max-w-4xl mx-auto relative">
+        <!-- Floating Logo -->
+        <div class="float-right ml-8 mb-6 mt-2 relative z-10">
+          <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-2xl bg-white dark:bg-primary-800 p-3 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <img 
+              src="/images/substack-logo.png" 
+              alt="The Point One Logo" 
+              class="w-full h-full object-contain"
+            />
+          </div>
+        </div>
+        
+        <h2 class="text-4xl md:text-5xl font-bold text-primary-900 dark:text-primary-100 mb-6 leading-tight">
+          newsletter + essays
+        </h2>
+        
+        <p class="text-xl text-primary-600 dark:text-primary-400 mb-8 leading-relaxed">
+          {substack.blurb}
+        </p>
+        
+        <!-- Clear the float before buttons -->
+        <div class="clear-both"></div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <a 
+            href={substack.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-warm-600 hover:bg-warm-700 text-white rounded-lg transition-colors font-medium text-lg"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+            </svg>
+            Subscribe to Newsletter
+          </a>
+          <a 
+            href={substack.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-warm-600 dark:text-warm-400 hover:underline font-medium"
+          >
+            Read Latest Posts
+          </a>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 gap-6 text-sm">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-warm-600 dark:text-warm-400 mb-1">
+              {substack.stats.subscribers}
+            </div>
+            <div class="text-primary-600 dark:text-primary-400">
+              Subscribers
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-warm-600 dark:text-warm-400 mb-1">
+              {substack.stats.schedule}
+            </div>
+            <div class="text-primary-600 dark:text-primary-400">
+              Publishing Schedule
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

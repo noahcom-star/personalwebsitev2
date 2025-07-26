@@ -1,0 +1,93 @@
+---
+import { projects } from '../../data/content';
+
+// Filter projects by status
+const currentProjects = projects.filter(project => project.status === 'current');
+const pastProjects = projects.filter(project => project.status === 'past');
+---
+
+<div class="py-20 bg-warm-50 dark:bg-primary-900">
+  <div class="max-w-4xl mx-auto px-4">
+    <!-- Current Projects Section -->
+    <div class="mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary-900 dark:text-primary-100 mb-8">
+        cool stuff i'm doing now:
+      </h2>
+      
+      <div class="space-y-6">
+        {currentProjects.map((project) => (
+          <div class="border-l-4 border-accent-500 pl-6">
+            <h3 class="text-xl font-semibold text-primary-900 dark:text-primary-100 mb-2">
+              {project.title}
+            </h3>
+            <p class="text-primary-600 dark:text-primary-400 mb-3 leading-relaxed">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-accent-600 dark:text-accent-400 hover:underline font-medium"
+              >
+                learn more →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Past Projects Section -->
+    <div>
+      <h2 class="text-3xl md:text-4xl font-bold text-primary-900 dark:text-primary-100 mb-8">
+        cool stuff i did before:
+      </h2>
+      
+      <div class="space-y-6">
+        {pastProjects.map((project) => (
+          <div class="border-l-4 border-warm-500 pl-6">
+            <h3 class="text-xl font-semibold text-primary-900 dark:text-primary-100 mb-2">
+              {project.title}
+            </h3>
+            <p class="text-primary-600 dark:text-primary-400 mb-3 leading-relaxed">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-warm-600 dark:text-warm-400 hover:underline font-medium"
+              >
+                learn more →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Additional Work Note -->
+    <div class="mt-16 pt-8 border-t border-primary-200 dark:border-primary-700">
+      <div class="text-center">
+        <p class="text-primary-600 dark:text-primary-400 leading-relaxed mb-4">
+          i've built too many projects to count, from consulting projects for Samsung to winning hackathons — 
+          the small list here is my most recent + best work as of late. i don't want to make this personal 
+          website a clutter box.
+        </p>
+        <p class="text-primary-600 dark:text-primary-400">
+          if you'd like to see what else i've done, feel free to 
+          <a 
+            href="https://noah-portfolio-extended.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-accent-600 dark:text-accent-400 hover:underline font-medium"
+          >
+            go here →
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div> 

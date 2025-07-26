@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { obsessions } from '../data/content';
+---
+
+<BaseLayout title="Obsessions - Things That Capture My Mind">
+  <div class="py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-16">
+              <h1 class="text-4xl md:text-5xl font-bold text-primary-900 dark:text-primary-100 mb-6">
+        My Obsessions
+      </h1>
+      <p class="text-xl text-primary-600 dark:text-primary-400 max-w-3xl mx-auto leading-relaxed">
+        The books, people, and rabbit holes that shape how I think about the world. 
+        These are the things I can't stop thinking about, discussing, or diving deeper into.
+      </p>
+      </div>
+      
+      <!-- Books Section -->
+      <section class="mb-16">
+        <div class="flex items-center gap-3 mb-8">
+                  <div class="w-8 h-8 bg-accent-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-primary-900 dark:text-primary-100">
+          Books That Changed My Mind
+        </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          {obsessions.books.map((book) => (
+            <div class="bg-white dark:bg-primary-800 p-6 rounded-lg border border-primary-200 dark:border-primary-700 hover:shadow-md transition-shadow">
+              <p class="text-primary-800 dark:text-primary-200 font-medium">
+                {book}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- People Section -->
+      <section class="mb-16">
+        <div class="flex items-center gap-3 mb-8">
+                  <div class="w-8 h-8 bg-warm-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-primary-900 dark:text-primary-100">
+          People I Follow Obsessively
+        </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {obsessions.people.map((person) => (
+            <div class="bg-white dark:bg-primary-800 p-6 rounded-lg border border-primary-200 dark:border-primary-700 hover:shadow-md transition-shadow">
+              <p class="text-primary-800 dark:text-primary-200">
+                {person}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Rabbit Holes Section -->
+      <section class="mb-16">
+        <div class="flex items-center gap-3 mb-8">
+                  <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-primary-900 dark:text-primary-100">
+          Rabbit Holes I Can't Escape
+        </h2>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {obsessions.rabbitHoles.map((hole) => (
+            <div class="bg-gradient-to-br from-warm-50 to-accent-50 dark:from-warm-900/20 dark:to-accent-900/20 p-6 rounded-lg border border-warm-200 dark:border-warm-800 hover:shadow-md transition-shadow">
+              <p class="text-primary-800 dark:text-primary-200 leading-relaxed">
+                {hole}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Doodle Section -->
+      <section class="text-center">
+        <div class="bg-gradient-to-r from-warm-400 to-accent-400 p-8 rounded-2xl text-white">
+          <h2 class="text-2xl font-bold mb-4">
+            Bonus: My Latest Doodle
+          </h2>
+          <p class="mb-6 text-warm-100">
+            Sometimes when I'm thinking too hard, I doodle. Here's what my brain produced recently:
+          </p>
+          <a 
+            href={obsessions.doodleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="doodle"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-primary-100 text-primary-800 rounded-lg transition-colors font-medium"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+            </svg>
+            View My Doodle
+          </a>
+        </div>
+      </section>
+      
+      <!-- Footer Note -->
+      <div class="mt-16 text-center">
+        <div class="bg-primary-100 dark:bg-primary-800 p-6 rounded-lg border-l-4 border-accent-500">
+          <p class="text-primary-600 dark:text-primary-400 italic">
+            "The important thing is not to stop questioning. Curiosity has its own reason for existing." 
+            <br>
+            <span class="text-sm">- Albert Einstein</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout> 

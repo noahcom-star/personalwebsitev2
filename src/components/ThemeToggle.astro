@@ -1,0 +1,88 @@
+---
+// No server-side logic needed for this component
+---
+
+<button 
+  id="theme-toggle"
+  data-testid="theme-toggle"
+  class="p-2 rounded-lg bg-primary-100 hover:bg-primary-200 dark:bg-primary-800 dark:hover:bg-primary-700 transition-colors"
+  aria-label="Toggle theme"
+>
+  <!-- Smiley face for light mode -->
+  <svg 
+    class="w-6 h-6 text-accent-600 theme-icon-light" 
+    fill="none" 
+    stroke="currentColor" 
+    viewBox="0 0 24 24"
+  >
+    <!-- Face circle -->
+    <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+    <!-- Eyes -->
+    <circle cx="9" cy="9" r="1" fill="currentColor"></circle>
+    <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+    <!-- Smile -->
+    <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke-width="2" stroke-linecap="round" data-icon="smiley"></path>
+  </svg>
+
+  <!-- Frowny face for dark mode -->
+  <svg 
+    class="w-6 h-6 text-warm-400 theme-icon-dark hidden" 
+    fill="none" 
+    stroke="currentColor" 
+    viewBox="0 0 24 24"
+  >
+    <!-- Face circle -->
+    <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+    <!-- Eyes -->
+    <circle cx="9" cy="9" r="1" fill="currentColor"></circle>
+    <circle cx="15" cy="9" r="1" fill="currentColor"></circle>
+    <!-- Frown -->
+    <path d="M16 16s-1.5-2-4-2-4 2-4 2" stroke-width="2" stroke-linecap="round" data-icon="frowny"></path>
+  </svg>
+</button>
+
+<script>
+  import { getInitialTheme, applyTheme, toggleTheme } from '../utils/theme';
+  
+  // Initialize theme on page load
+  let currentTheme = getInitialTheme();
+  applyTheme(currentTheme);
+  updateIcon(currentTheme);
+
+  // Add click handler
+  const toggleButton = document.getElementById('theme-toggle');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', () => {
+      currentTheme = toggleTheme(currentTheme);
+      applyTheme(currentTheme);
+      updateIcon(currentTheme);
+    });
+  }
+
+  function updateIcon(theme: 'light' | 'dark') {
+    const lightIcon = document.querySelector('.theme-icon-light');
+    const darkIcon = document.querySelector('.theme-icon-dark');
+    
+    if (theme === 'dark') {
+      lightIcon?.classList.add('hidden');
+      darkIcon?.classList.remove('hidden');
+    } else {
+      lightIcon?.classList.remove('hidden');
+      darkIcon?.classList.add('hidden');
+    }
+  }
+
+  // Handle page navigation (for SPAs)
+  document.addEventListener('astro:page-load', () => {
+    currentTheme = getInitialTheme();
+    updateIcon(currentTheme);
+  });
+</script>
+
+<style>
+  /* Ensure smooth transitions */
+  .theme-icon-light,
+  .theme-icon-dark {
+    transition: opacity 0.2s ease;
+  }
+</style> 

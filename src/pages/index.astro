@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Projects from '../components/sections/Projects.astro';
+import Substack from '../components/sections/Substack.astro';
+import Personal from '../components/sections/Personal.astro';
+import CV from '../components/sections/CV.astro';
+import Contact from '../components/sections/Contact.astro';
+
+const title = "Welcome to My Personal Website";
+---
+
+<BaseLayout title={title}>
+  <section id="hero">
+    <Hero />
+  </section>
+  
+  <section id="about">
+    <About />
+  </section>
+  
+  <section id="projects">
+    <Projects />
+  </section>
+  
+  <section id="substack">
+  <Substack />
+</section>
+
+<section id="personal">
+  <Personal />
+</section>
+
+<section id="cv">
+  <CV />
+</section>
+  
+  <section id="contact">
+    <Contact />
+  </section>
+</BaseLayout> 
