@@ -23,16 +23,18 @@ const pastProjects = projects.filter(project => project.status === 'past');
             <p class="text-primary-600 dark:text-primary-400 mb-3 leading-relaxed">
               {project.description}
             </p>
-            <div class="flex flex-wrap gap-4 text-sm">
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="text-accent-600 dark:text-accent-400 hover:underline font-medium"
-              >
-                learn more →
-              </a>
-            </div>
+            {project.showLink !== false && (
+              <div class="flex flex-wrap gap-4 text-sm">
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-accent-600 dark:text-accent-400 hover:underline font-medium"
+                >
+                  learn more →
+                </a>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -53,16 +55,18 @@ const pastProjects = projects.filter(project => project.status === 'past');
             <p class="text-primary-600 dark:text-primary-400 mb-3 leading-relaxed">
               {project.description}
             </p>
-            <div class="flex flex-wrap gap-4 text-sm">
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="text-warm-600 dark:text-warm-400 hover:underline font-medium"
-              >
-                learn more →
-              </a>
-            </div>
+            {project.showLink !== false && (
+              <div class="flex flex-wrap gap-4 text-sm">
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-warm-600 dark:text-warm-400 hover:underline font-medium"
+                >
+                  learn more →
+                </a>
+              </div>
+            )}
           </div>
         ))}
       </div>

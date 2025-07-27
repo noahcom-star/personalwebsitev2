@@ -6,6 +6,7 @@ export interface Project {
   link: string;
   tech: string[];
   status: 'current' | 'past';
+  showLink?: boolean;
 }
 
 export interface SubstackData {
@@ -51,21 +52,24 @@ export const projects: Project[] = [
     description: "startup with support from U of T Rotman & Western Ivey. scaled outreach from 0 to 10,000+ users in less than 2 weeks, then worked on product and marketing to drive growth and user engagement.",
     link: "https://builtforimpact.ca",
     tech: ["Growth Marketing", "Product Strategy", "Analytics", "User Acquisition"],
-    status: "past"
+    status: "past",
+    showLink: false
   },
   {
-    title: "AI-Powered Social Media Marketing",
-    description: "built software that pulled info from social media platforms like Instagram and leveraged AI to assist with targeted ads for SMEs. made decent money as a high schooler doing marketing for small businesses.",
+    title: "Marketing / Consulting for SMEs",
+    description: "Wanted to find random ways to make money in high school so I did marketing for SMEs and eventually made decent money for a high-schooler. One of my favourite projects was coding a software that pulled info from social media (like Instagram) that then leveraged AI to assist with targeted ads.",
     link: "https://social-ai-demo.vercel.app",
     tech: ["Python", "Instagram API", "AI/ML", "Advertising APIs", "Data Analytics"],
-    status: "past"
+    status: "past",
+    showLink: false
   },
   {
     title: "MovItiative",
     description: "mini charity launched in grade 7 (2019) to support cancer research after seeing everyone around me affected by cancer. grew from solo project to 20+ team members, scaled fundraising 10x, now spreading across school boards in Ontario.",
     link: "https://movitivate.org",
     tech: ["Community Organizing", "Fundraising", "Event Planning", "Social Impact"],
-    status: "past"
+    status: "past",
+    showLink: false
   }
 ];
 
