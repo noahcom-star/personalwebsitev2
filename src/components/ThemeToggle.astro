@@ -3,9 +3,8 @@
 ---
 
 <button 
-  id="theme-toggle"
+  class="theme-toggle-btn p-2 rounded-lg bg-primary-100 hover:bg-primary-200 dark:bg-primary-800 dark:hover:bg-primary-700 transition-colors"
   data-testid="theme-toggle"
-  class="p-2 rounded-lg bg-primary-100 hover:bg-primary-200 dark:bg-primary-800 dark:hover:bg-primary-700 transition-colors"
   aria-label="Toggle theme"
 >
   <!-- Smiley face for light mode -->
@@ -47,35 +46,35 @@
   // Initialize theme on page load
   let currentTheme = getInitialTheme();
   applyTheme(currentTheme);
-  updateIcon(currentTheme);
+  updateAllIcons(currentTheme);
 
-  // Add click handler
-  const toggleButton = document.getElementById('theme-toggle');
-  if (toggleButton) {
-    toggleButton.addEventListener('click', () => {
+  // Add click handlers to all theme toggle buttons
+  const toggleButtons = document.querySelectorAll('.theme-toggle-btn');
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
       currentTheme = toggleTheme(currentTheme);
       applyTheme(currentTheme);
-      updateIcon(currentTheme);
+      updateAllIcons(currentTheme);
     });
-  }
+  });
 
-  function updateIcon(theme: 'light' | 'dark') {
-    const lightIcon = document.querySelector('.theme-icon-light');
-    const darkIcon = document.querySelector('.theme-icon-dark');
+  function updateAllIcons(theme: 'light' | 'dark') {
+    const lightIcons = document.querySelectorAll('.theme-icon-light');
+    const darkIcons = document.querySelectorAll('.theme-icon-dark');
     
     if (theme === 'dark') {
-      lightIcon?.classList.add('hidden');
-      darkIcon?.classList.remove('hidden');
+      lightIcons.forEach(icon => icon.classList.add('hidden'));
+      darkIcons.forEach(icon => icon.classList.remove('hidden'));
     } else {
-      lightIcon?.classList.remove('hidden');
-      darkIcon?.classList.add('hidden');
+      lightIcons.forEach(icon => icon.classList.remove('hidden'));
+      darkIcons.forEach(icon => icon.classList.add('hidden'));
     }
   }
 
   // Handle page navigation (for SPAs)
   document.addEventListener('astro:page-load', () => {
     currentTheme = getInitialTheme();
-    updateIcon(currentTheme);
+    updateAllIcons(currentTheme);
   });
 </script>
 
