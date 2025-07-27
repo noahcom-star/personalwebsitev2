@@ -31,9 +31,112 @@ const {
     </style>
   </head>
   <body class="font-mono bg-warm-50 dark:bg-primary-950 text-primary-900 dark:text-primary-100 transition-colors min-h-screen">
-    <div class="flex">
-      <!-- Left Sidebar Navigation -->
+    <!-- Mobile Header -->
+    <header class="md:hidden fixed top-0 left-0 right-0 bg-white dark:bg-primary-900 border-b border-primary-200 dark:border-primary-700 p-4 z-50">
+      <div class="flex items-center justify-between">
+        <h1 class="text-lg font-bold text-primary-900 dark:text-primary-100">Noah Barbaros</h1>
+        <div class="flex items-center gap-3">
+          <ThemeToggle />
+          <button id="mobile-menu-toggle" class="p-2 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
       <nav class="fixed left-0 top-0 h-screen w-64 bg-white dark:bg-primary-900 border-r border-primary-200 dark:border-primary-700 p-6 overflow-y-auto">
+        <div class="flex flex-col h-full">
+          <!-- Mobile Header -->
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-xl font-bold text-primary-900 dark:text-primary-100">
+              Navigation
+            </h2>
+            <button id="mobile-menu-close" class="p-2 text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-lg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Navigation Links -->
+          <div class="flex-1">
+            <ul class="space-y-4">
+              <li>
+                <a 
+                  href="#hero" 
+                  class="block p-3 rounded-lg text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors mobile-nav-link"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#about" 
+                  class="block p-3 rounded-lg text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors mobile-nav-link"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#projects" 
+                  class="block p-3 rounded-lg text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors mobile-nav-link"
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#substack" 
+                  class="block p-3 rounded-lg text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors mobile-nav-link"
+                >
+                  Substack
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#personal" 
+                  class="block p-3 rounded-lg text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors mobile-nav-link"
+                >
+                  Personal
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#cv" 
+                  class="block p-3 rounded-lg text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors mobile-nav-link"
+                >
+                  CV
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#contact" 
+                  class="block p-3 rounded-lg text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors mobile-nav-link"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Footer -->
+          <div class="mt-auto pt-6 border-t border-primary-200 dark:border-primary-700">
+            <p class="text-sm text-primary-500 dark:text-primary-400 text-center">
+              Built with Astro
+            </p>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="flex">
+      <!-- Desktop Sidebar Navigation (hidden on mobile) -->
+      <nav class="hidden md:block fixed left-0 top-0 h-screen w-64 bg-white dark:bg-primary-900 border-r border-primary-200 dark:border-primary-700 p-6 overflow-y-auto">
         <div class="flex flex-col h-full">
           <!-- Header with Theme Toggle -->
           <div class="flex items-center justify-between mb-8">
@@ -115,9 +218,52 @@ const {
       </nav>
 
       <!-- Main Content Area -->
-      <main class="flex-1 ml-64 min-h-screen">
+      <main class="flex-1 md:ml-64 min-h-screen pt-16 md:pt-0">
         <slot />
       </main>
     </div>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        // Open mobile menu
+        mobileMenuToggle?.addEventListener('click', function() {
+          mobileMenu?.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        function closeMobileMenu() {
+          mobileMenu?.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        mobileMenuClose?.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking overlay
+        mobileMenu?.addEventListener('click', function(e) {
+          if (e.target === mobileMenu) {
+            closeMobileMenu();
+          }
+        });
+
+        // Close menu when clicking nav links
+        mobileNavLinks.forEach(link => {
+          link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closeMobileMenu();
+          }
+        });
+      });
+    </script>
   </body>
 </html> 
