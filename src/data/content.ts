@@ -27,15 +27,15 @@ export const projects: Project[] = [
     status: "current"
   },
   {
-    title: "Armilla AI",
-    description: "Y Combinator-backed AI insurance startup ($5M+ raised). drove 12x increase in impressions (5.46K → 66.2K), 5x increase in clicks, ranked on page 1 for high-intent KWs like 'AI insurance' (unranked before), grew backlinks 5x (1,379 → 7,706), and optimized for AI citations in ChatGPT, Perplexity, Claude.",
+    title: "Intern @ Armilla AI",
+    description: "Did SEO / GEO for Y Combinator-backed AI insurance startup ($5M+ raised). drove 12x increase in impressions (5.46K → 66.2K), 5x increase in clicks, ranked on page 1 for high-intent KWs like 'AI insurance' (unranked before), grew backlinks 5x (1,379 → 7,706), and optimized for AI citations in ChatGPT, Perplexity, Claude.",
     link: "https://armilla.ai",
     tech: ["SEO", "AI Optimization", "Analytics", "Content Strategy", "GEO"],
     status: "current"
   },
   {
-    title: "The Point One",
-    description: "my Substack documenting the journey from '0 to 0.1' — sharing raw perspectives on life, startups, and entrepreneurship from a 17-year-old's lens. weekly essays and newsletters exploring the early stages of building something meaningful.",
+    title: "From 0 to 0.1",
+    description: "my Substack documenting my journey from '0 to 0.1' -- sharing raw perspectives on life, startups, and entrepreneurship from a 17 y/o lens. bi-weekly essays + newsletters exploring the early stages of building something meaningful.",
     link: "https://thepointone.co",
     tech: ["Writing", "Substack", "Content Strategy", "Storytelling", "Newsletter"],
     status: "current"
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     status: "past"
   },
   {
-    title: "Built for Impact",
+    title: "Intern @ Built for Impact",
     description: "startup with support from U of T Rotman & Western Ivey. scaled outreach from 0 to 10,000+ users in less than 2 weeks, then worked on product and marketing to drive growth and user engagement.",
     link: "https://builtforimpact.ca",
     tech: ["Growth Marketing", "Product Strategy", "Analytics", "User Acquisition"],
